@@ -1,1071 +1,816 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Portfolio akademik pribadi — pendidikan, penelitian, publikasi, proyek, dan kegiatan.">
-<title>ilhamcp511 — Academic Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio akademik pribadi Ilham Cahya Purnama — pendidikan, penelitian, publikasi, proyek, galeri kegiatan, dan jadwal kuliah FPMIPA UPI.">
+  <title>ilhamcp511 — Academic Portfolio (Neo-Brutalism Style)</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Archivo Black & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-:root{
-    --cream:#fff8ed;
-    --cream-2:#f7ead7;
-    --white:#fff;
-    --orange:#d2691e;
-    --orange-dark:#a94f13;
-    --ochre:#b8860b;
-    --brown:#8b4513;
-    --brown-dark:#3b2416;
-    --text:#38261b;
-    --muted:#765f4d;
-    --border:#cdb89d;
-    --dark:#302015;
-    --shadow:0 10px 30px rgba(59,36,22,.08);
-    --container:1180px;
-    --transition:.25s ease;
-}
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:82px}
-body{
-    font-family:"Inter",sans-serif;
-    color:var(--text);
-    background:var(--cream);
-    line-height:1.7;
-    overflow-x:hidden;
-}
-a{color:inherit;text-decoration:none}
-button,input,textarea{font:inherit}
-img{display:block;width:100%}
-.container{width:min(var(--container),calc(100% - 48px));margin:auto}
-.serif{font-family:"Playfair Display",Georgia,serif}
-.portrait-frame img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-.eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    color:var(--orange-dark);
-    font-size:.7rem;
-    font-weight:700;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-}
-.eyebrow::before{
-    content:"";
-    width:28px;height:2px;
-    background:var(--orange);
-}
-.section{padding:95px 0}
-.section-heading{max-width:720px;margin-bottom:42px}
-.section-heading h2{
-    margin-top:8px;
-    font-family:"Playfair Display",Georgia,serif;
-    font-size:clamp(2rem,4vw,3.2rem);
-    line-height:1.15;
-    color:var(--brown-dark);
-}
-.section-heading p{margin-top:14px;color:var(--muted);max-width:650px}
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    min-height:44px;
-    padding:10px 18px;
-    border:1px solid transparent;
-    border-radius:4px;
-    font-size:.82rem;
-    font-weight:700;
-    cursor:pointer;
-    transition:all var(--transition);
-}
-.btn:hover{transform:translateY(-2px)}
-.btn-primary{color:white;background:var(--brown-dark)}
-.btn-primary:hover{background:var(--orange-dark)}
-.btn-outline{color:var(--brown-dark);border-color:var(--brown-dark)}
-.btn-outline:hover{color:white;background:var(--brown-dark)}
-.btn-light{color:var(--brown-dark);background:var(--cream)}
-
-/* NAVBAR */
-.navbar{
-    position:sticky;top:0;z-index:1000;
-    background:rgba(255,248,237,.95);
-    border-bottom:1px solid var(--border);
-    backdrop-filter:blur(12px);
-}
-.nav-inner{
-    min-height:72px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-.brand{display:flex;flex-direction:column;line-height:1.15}
-.brand strong{font-family:"Playfair Display",serif;font-size:1.15rem;color:var(--brown-dark)}
-.brand span{
-    margin-top:3px;color:var(--orange-dark);
-    font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase
-}
-.nav-links{display:flex;gap:25px;list-style:none}
-.nav-links a{
-    position:relative;
-    padding:25px 0;
-    color:var(--muted);
-    font-size:.77rem;
-    font-weight:600
-}
-.nav-links a::after{
-    content:"";position:absolute;left:0;right:100%;bottom:17px;
-    height:2px;background:var(--orange);transition:right var(--transition)
-}
-.nav-links a:hover,.nav-links a.active{color:var(--brown-dark)}
-.nav-links a:hover::after,.nav-links a.active::after{right:0}
-.menu-toggle{
-    display:none;width:42px;height:42px;
-    border:1px solid var(--border);border-radius:4px;
-    color:var(--brown-dark);background:var(--cream);cursor:pointer
-}
-
-/* HERO */
-.hero{
-    position:relative;
-    min-height:680px;
-    display:flex;
-    align-items:center;
-    padding:90px 0;
-    overflow:hidden;
-    border-bottom:1px solid var(--border)
-}
-.hero::before{
-    content:"";position:absolute;width:510px;height:510px;
-    right:-180px;top:-190px;border:1px solid rgba(210,105,30,.25);border-radius:50%
-}
-.hero::after{
-    content:"";position:absolute;width:300px;height:300px;
-    left:-180px;bottom:-180px;border:1px solid rgba(184,134,11,.25);border-radius:50%
-}
-.hero-grid{
-    position:relative;z-index:1;
-    display:grid;grid-template-columns:1.15fr .85fr;
-    align-items:center;gap:75px
-}
-.hero-copy h1{
-    max-width:760px;margin:15px 0 20px;
-    font-family:"Playfair Display",serif;
-    font-size:clamp(3.1rem,7vw,6.4rem);
-    line-height:.98;letter-spacing:-.045em;color:var(--brown-dark)
-}
-.hero-copy h1 span{color:var(--orange)}
-.hero-copy>p{max-width:650px;color:var(--muted);font-size:1rem}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.hero-meta{
-    display:flex;flex-wrap:wrap;gap:20px;
-    margin-top:38px;padding-top:22px;border-top:1px solid var(--border)
-}
-.meta-item strong{
-    display:block;font-size:.68rem;color:var(--brown-dark);
-    text-transform:uppercase;letter-spacing:.08em
-}
-.meta-item span{color:var(--muted);font-size:.78rem}
-.hero-visual{
-    position:relative;min-height:510px;
-    display:flex;align-items:center;justify-content:center
-}
-.portrait-frame{
-    position:relative;width:min(390px,100%);aspect-ratio:4/5;
-    padding:14px;background:white;border:1px solid var(--brown-dark);
-    box-shadow:18px 18px 0 var(--orange);transform:rotate(2deg)
-}
-.portrait-placeholder{
-    height:100%;display:flex;align-items:center;justify-content:center;
-    padding:30px;text-align:center;color:var(--cream);
-    background:linear-gradient(145deg,rgba(210,105,30,.3),rgba(59,36,22,.9)),
-               repeating-linear-gradient(45deg,transparent 0 14px,rgba(255,255,255,.04) 14px 16px)
-}
-.portrait-placeholder .initial{
-    font-family:"Playfair Display",serif;font-size:7rem;line-height:1;color:#fff4df
-}
-.portrait-placeholder p{margin-top:15px;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase}
-.leaf{
-    position:absolute;width:54px;height:75px;
-    border-radius:80% 0 80% 0;background:var(--ochre);opacity:.85;transform:rotate(35deg)
-}
-.leaf.one{right:6%;top:12%}
-.leaf.two{left:4%;bottom:12%;background:var(--orange);transform:rotate(-28deg) scale(.7)}
-.leaf.three{right:8%;bottom:10%;background:var(--brown);transform:rotate(80deg) scale(.55)}
-
-/* ABOUT */
-.about{background:white;border-bottom:1px solid var(--border)}
-.about-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:70px;align-items:start}
-.about-label{position:sticky;top:110px}
-.about-label h2{
-    margin-top:12px;font-family:"Playfair Display",serif;
-    font-size:clamp(2.3rem,4vw,3.8rem);line-height:1.05;color:var(--brown-dark)
-}
-.about-card{padding:35px;border:1px solid var(--border);box-shadow:var(--shadow)}
-.about-card p+p{margin-top:18px}
-.quote{
-    margin:28px 0;padding:22px 24px;
-    border-left:4px solid var(--orange);
-    background:var(--cream-2);
-    color:var(--brown-dark);
-    font-family:"Playfair Display",serif;font-size:1.2rem
-}
-
-/* EDUCATION */
-.timeline{position:relative;max-width:900px;margin:auto}
-.timeline::before{
-    content:"";position:absolute;left:110px;top:5px;bottom:5px;
-    width:1px;background:var(--border)
-}
-.timeline-item{
-    position:relative;display:grid;grid-template-columns:110px 1fr;
-    gap:45px;padding-bottom:42px
-}
-.timeline-year{padding-top:4px;color:var(--orange-dark);font-size:.78rem;font-weight:800;letter-spacing:.08em}
-.timeline-content{
-    position:relative;padding:24px 25px;
-    border:1px solid var(--border);background:white;box-shadow:var(--shadow)
-}
-.timeline-content::before{
-    content:"";position:absolute;left:-51px;top:28px;
-    width:11px;height:11px;border:3px solid var(--cream);
-    border-radius:50%;background:var(--orange);box-shadow:0 0 0 1px var(--orange)
-}
-.timeline-content h3{font-family:"Playfair Display",serif;font-size:1.35rem;color:var(--brown-dark)}
-.timeline-content .place{margin-top:3px;color:var(--orange-dark);font-size:.8rem;font-weight:700}
-.timeline-content p{margin-top:12px;color:var(--muted);font-size:.86rem}
-
-/* RESEARCH */
-.research{background:var(--cream-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.research-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.research-card{
-    padding:28px;min-height:190px;background:white;border:1px solid var(--border);
-    transition:all var(--transition)
-}
-.research-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.research-number{color:var(--ochre);font-size:.68rem;font-weight:800;letter-spacing:.1em}
-.research-icon{margin:14px 0 8px;font-size:1.25rem;color:var(--orange)}
-.research-card h3{font-family:"Playfair Display",serif;font-size:1.3rem;color:var(--brown-dark)}
-.research-card p{margin-top:8px;color:var(--muted);font-size:.82rem}
-.research-card.wide{grid-column:span 2;min-height:auto}
-
-/* FEATURED */
-.featured{
-    position:relative;padding:95px 0;overflow:hidden;
-    color:var(--cream);background:var(--dark)
-}
-.featured::after{
-    content:"";position:absolute;width:420px;height:420px;
-    right:-180px;bottom:-230px;border:1px solid rgba(210,105,30,.35);border-radius:50%
-}
-.featured-grid{
-    position:relative;z-index:1;
-    display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center
-}
-.featured .eyebrow{color:#e3b35a}
-.featured h2{
-    margin-top:12px;font-family:"Playfair Display",serif;
-    font-size:clamp(2.3rem,5vw,4rem);line-height:1.1
-}
-.featured-intro{color:#d8c9b9;margin-top:16px}
-.featured-box{padding:35px;background:#3b2a1e;border:1px solid rgba(255,255,255,.16)}
-.featured-box .tag{
-    display:inline-block;padding:5px 9px;color:#3b2416;background:#e3b35a;
-    font-size:.63rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase
-}
-.featured-box h3{margin-top:18px;font-family:"Playfair Display",serif;font-size:1.75rem}
-.featured-box p{margin-top:13px;color:#d8c9b9;font-size:.86rem}
-.featured-meta{
-    display:flex;flex-wrap:wrap;gap:25px;margin-top:22px;padding-top:18px;
-    border-top:1px solid rgba(255,255,255,.12);color:#cbb9a7;font-size:.74rem
-}
-
-/* PUBLICATIONS */
-.publication-list{border-top:1px solid var(--border)}
-.publication{
-    display:grid;grid-template-columns:60px 1fr auto;gap:25px;align-items:center;
-    padding:25px 0;border-bottom:1px solid var(--border);transition:all var(--transition)
-}
-.publication:hover{padding-left:12px;padding-right:12px;background:var(--cream-2)}
-.pub-number{color:var(--orange);font-size:.76rem;font-weight:800}
-.publication h3{font-family:"Playfair Display",serif;font-size:1.18rem;color:var(--brown-dark)}
-.publication p{margin-top:4px;color:var(--muted);font-size:.76rem}
-.pub-year{color:var(--ochre);font-size:.76rem;font-weight:800}
-
-/* GALLERY */
-.gallery{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.gallery-card{overflow:hidden;border:1px solid var(--border);background:var(--cream);box-shadow:var(--shadow)}
-.gallery-image{
-    position:relative;aspect-ratio:4/3;overflow:hidden;
-    display:flex;align-items:center;justify-content:center;color:var(--cream);
-    background:linear-gradient(135deg,rgba(139,69,19,.9),rgba(210,105,30,.65))
-}
-.gallery-image span{font-family:"Playfair Display",serif;font-size:3rem;opacity:.75}
-.gallery-card:nth-child(2) .gallery-image{background:linear-gradient(135deg,rgba(184,134,11,.95),rgba(59,36,22,.85))}
-.gallery-card:nth-child(3) .gallery-image{background:linear-gradient(135deg,rgba(210,105,30,.9),rgba(59,36,22,.9))}
-.gallery-card:nth-child(4) .gallery-image{background:linear-gradient(135deg,rgba(59,36,22,.95),rgba(139,69,19,.75))}
-.gallery-card:nth-child(5) .gallery-image{background:linear-gradient(135deg,rgba(210,105,30,.75),rgba(184,134,11,.8))}
-.gallery-card:nth-child(6) .gallery-image{background:linear-gradient(135deg,rgba(139,69,19,.8),rgba(184,134,11,.8))}
-.gallery-caption{padding:15px 16px}
-.gallery-caption h3{font-family:"Playfair Display",serif;color:var(--brown-dark);font-size:1rem}
-.gallery-caption p{margin-top:3px;color:var(--muted);font-size:.72rem}
-
-/* SCHEDULE */
-.schedule-wrap{overflow-x:auto;border:1px solid var(--border);background:white;box-shadow:var(--shadow)}
-.schedule{width:100%;min-width:720px;border-collapse:collapse}
-.schedule th,.schedule td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--border);font-size:.77rem}
-.schedule th{color:var(--cream);background:var(--brown-dark);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
-.schedule tr:last-child td{border-bottom:0}
-.schedule tr:hover td{background:var(--cream-2)}
-.date{color:var(--orange-dark);font-weight:800}
-.event-name{color:var(--brown-dark);font-weight:700}
-.status{
-    display:inline-block;padding:4px 8px;border-radius:3px;
-    color:var(--brown-dark);background:#ead49d;font-size:.6rem;font-weight:800;letter-spacing:.06em
-}
-.status.done{color:#5d3c28;background:#ded2c4}
-
-/* CONTACT */
-.contact{background:var(--cream-2);border-top:1px solid var(--border)}
-.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px}
-.contact-copy h2{
-    margin-top:12px;font-family:"Playfair Display",serif;
-    font-size:clamp(2.2rem,4vw,3.7rem);line-height:1.1;color:var(--brown-dark)
-}
-.contact-copy>p{margin-top:16px;color:var(--muted);max-width:500px}
-.contact-list{margin-top:30px;display:grid;gap:14px}
-.contact-item{display:flex;gap:15px;align-items:flex-start}
-.contact-icon{
-    width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;
-    color:white;background:var(--brown-dark);border-radius:4px;font-size:.78rem
-}
-.contact-item strong{display:block;color:var(--brown-dark);font-size:.75rem}
-.contact-item span{color:var(--muted);font-size:.77rem}
-.contact-form{padding:32px;background:white;border:1px solid var(--border);box-shadow:var(--shadow)}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.field{margin-bottom:16px}
-.field label{display:block;margin-bottom:6px;color:var(--brown-dark);font-size:.71rem;font-weight:700}
-.field input,.field textarea{
-    width:100%;padding:12px 13px;border:1px solid var(--border);border-radius:3px;
-    outline:none;color:var(--text);background:var(--cream);font-size:.8rem
-}
-.field input:focus,.field textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(210,105,30,.1)}
-.field textarea{min-height:130px;resize:vertical}
-.form-message{display:none;margin-top:12px;color:var(--orange-dark);font-size:.75rem}
-
-/* FOOTER */
-footer{color:#dbcbbb;background:var(--brown-dark)}
-.footer-main{padding:55px 0 38px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:45px}
-.footer-brand h2{font-family:"Playfair Display",serif;color:var(--cream);font-size:1.7rem}
-.footer-brand p{max-width:390px;margin-top:10px;color:#bca997;font-size:.77rem}
-.footer-col h3{margin-bottom:13px;color:var(--cream);font-size:.73rem;letter-spacing:.1em;text-transform:uppercase}
-.footer-col a{display:block;width:max-content;margin:5px 0;color:#bca997;font-size:.75rem;transition:color var(--transition)}
-.footer-col a:hover{color:#e3b35a}
-.footer-bottom{
-    padding:18px 0;border-top:1px solid rgba(255,255,255,.12);
-    display:flex;justify-content:space-between;gap:20px;color:#9e8977;font-size:.67rem
-}
-
-/* BACK TO TOP */
-.back-top{
-    position:fixed;right:22px;bottom:22px;z-index:900;
-    width:42px;height:42px;display:grid;place-items:center;
-    border:1px solid var(--brown-dark);border-radius:4px;
-    color:var(--cream);background:var(--brown-dark);
-    opacity:0;visibility:hidden;transform:translateY(10px);cursor:pointer;transition:all var(--transition)
-}
-.back-top.show{opacity:1;visibility:visible;transform:translateY(0)}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-    .nav-links{
-        position:absolute;left:15px;right:15px;top:calc(100% + 1px);
-        display:none;flex-direction:column;gap:0;padding:10px 18px;
-        border:1px solid var(--border);background:var(--cream);box-shadow:var(--shadow)
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Archivo Black"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            nb: {
+              bg: '#fcf8ee',
+              card: '#ffffff',
+              ink: '#121212',
+              yellow: '#ffde59',
+              orange: '#ff6b4a',
+              blue: '#54a0ff',
+              green: '#2ed573',
+              purple: '#c4b5fd',
+              cream: '#fffdf5',
+            }
+          },
+          boxShadow: {
+            'brutal': '4px 4px 0px #121212',
+            'brutal-lg': '7px 7px 0px #121212',
+            'brutal-xl': '12px 12px 0px #121212',
+          }
+        }
+      }
     }
-    .nav-links.open{display:flex}
-    .nav-links a{display:block;padding:12px 0}
-    .nav-links a::after{bottom:5px}
-    .menu-toggle{display:block}
-    .hero-grid,.featured-grid,.contact-grid{grid-template-columns:1fr}
-    .hero{min-height:auto}
-    .hero-copy{order:1}
-    .hero-visual{order:2;min-height:460px}
-    .about-grid{grid-template-columns:1fr;gap:35px}
-    .about-label{position:static}
-    .footer-main{grid-template-columns:1fr 1fr}
-    .footer-brand{grid-column:span 2}
-}
-@media(max-width:680px){
-    .container{width:min(100% - 30px,var(--container))}
-    .section{padding:70px 0}
-    .hero{padding:70px 0}
-    .hero-copy h1{font-size:clamp(2.8rem,15vw,4.5rem)}
-    .hero-meta{display:grid;grid-template-columns:1fr 1fr}
-    .portrait-frame{width:min(300px,82%);box-shadow:12px 12px 0 var(--orange)}
-    .research-grid{grid-template-columns:1fr}
-    .research-card.wide{grid-column:auto}
-    .timeline::before{left:8px}
-    .timeline-item{display:block;padding-left:35px}
-    .timeline-year{margin-bottom:9px}
-    .timeline-content::before{left:-32px}
-    .gallery-grid{grid-template-columns:1fr}
-    .publication{grid-template-columns:38px 1fr;gap:15px}
-    .pub-year{grid-column:2}
-    .form-row{grid-template-columns:1fr;gap:0}
-    .footer-main{grid-template-columns:1fr;gap:30px}
-    .footer-brand{grid-column:auto}
-    .footer-bottom{flex-direction:column}
-}
-/* Neobrutalism system: academic notes treated as bold, tactile poster pieces. */
-:root{
-    --nb-paper:#f8f3e8;
-    --nb-surface:#fffdf7;
-    --nb-ink:#171717;
-    --nb-accent:#ffcb3d;
-    --nb-shadow:7px 7px 0 var(--nb-ink);
-    --container:1180px;
-}
-html{scroll-padding-top:92px}
-body{font-family:"DM Sans",Arial,sans-serif;background:var(--nb-paper);color:var(--nb-ink);line-height:1.55}
-body::selection{color:var(--nb-ink);background:var(--nb-accent)}
-.serif,.brand strong,.hero-copy h1,.section-heading h2,.about-label h2,.timeline-content h3,.research-card h3,.featured h2,.featured-box h3,.publication h3,.gallery-caption h3,.contact-copy h2,.footer-brand h2{font-family:"Archivo Black",Impact,sans-serif;letter-spacing:-.035em}
-.eyebrow{display:none}
-.section{padding:108px 0}
-.section-heading{max-width:760px;margin-bottom:48px}
-.section-heading h2{font-size:clamp(2.25rem,5vw,4.6rem);line-height:.98;color:var(--nb-ink)}
-.section-heading p{max-width:600px;margin-top:18px;color:var(--nb-ink);font-size:1.05rem}
-.navbar{background:var(--nb-paper);border-bottom:3px solid var(--nb-ink);backdrop-filter:none}
-.nav-inner{min-height:82px}
-.brand strong{font-size:1.2rem;color:var(--nb-ink)}
-.brand span{margin-top:1px;color:var(--nb-ink);font-size:.71rem;letter-spacing:0;text-transform:none}
-.nav-links{gap:20px}
-.nav-links a{padding:29px 0;color:var(--nb-ink);font-size:.84rem;font-weight:700}
-.nav-links a::after{right:100%;bottom:18px;height:4px;background:var(--nb-accent)}
-.nav-links a:hover,.nav-links a.active{color:var(--nb-ink)}
-.menu-toggle{border:3px solid var(--nb-ink);border-radius:0;color:var(--nb-ink);background:var(--nb-accent);font-weight:900}
-.hero{min-height:700px;padding:88px 0;background:var(--nb-paper);border-bottom:3px solid var(--nb-ink)}
-.hero::before,.hero::after,.leaf{display:none}
-.hero-grid{gap:64px}
-.hero-copy h1{max-width:800px;margin:0 0 24px;font-size:clamp(3.65rem,8.8vw,8.2rem);line-height:.86;color:var(--nb-ink);text-transform:uppercase}
-.hero-copy h1 span{color:var(--nb-ink)}
-.hero-copy>p{max-width:610px;color:var(--nb-ink);font-size:1.1rem}
-.hero-actions{gap:14px;margin-top:32px}
-.btn{min-height:48px;padding:11px 19px;border:3px solid var(--nb-ink);border-radius:0;font-size:.88rem;font-weight:700;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
-.btn:hover{transform:translate(4px,4px);box-shadow:none}
-.btn:focus-visible,.nav-links a:focus-visible,.menu-toggle:focus-visible,.back-top:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--nb-ink);outline-offset:3px}
-.btn-primary{color:var(--nb-ink);background:var(--nb-accent);box-shadow:var(--nb-shadow)}
-.btn-primary:hover{color:var(--nb-ink);background:var(--nb-accent)}
-.btn-outline,.btn-light{color:var(--nb-ink);background:var(--nb-surface);box-shadow:var(--nb-shadow)}
-.btn-outline:hover{color:var(--nb-ink);background:var(--nb-surface)}
-.hero-meta{gap:28px;margin-top:42px;padding-top:20px;border-top:3px solid var(--nb-ink)}
-.meta-item strong{color:var(--nb-ink);font-size:.72rem;letter-spacing:0}.meta-item span{color:var(--nb-ink);font-size:.86rem}
-.portrait-frame{padding:10px;background:var(--nb-surface);border:3px solid var(--nb-ink);box-shadow:14px 14px 0 var(--nb-accent);transform:rotate(2deg)}
-.about{background:var(--nb-surface);border-bottom:3px solid var(--nb-ink)}
-.about-label h2{margin-top:0;font-size:clamp(2.6rem,5vw,4.8rem);line-height:.92;color:var(--nb-ink)}
-.about-card{padding:38px;background:var(--nb-paper);border:3px solid var(--nb-ink);box-shadow:var(--nb-shadow);font-size:1.05rem}
-.quote{margin:30px 0;padding:22px 0;border:0;border-top:3px solid var(--nb-ink);border-bottom:3px solid var(--nb-ink);background:transparent;color:var(--nb-ink);font-family:"Archivo Black",Impact,sans-serif;font-size:1.35rem;line-height:1.2}
-.timeline::before{left:126px;width:3px;background:var(--nb-ink)}
-.timeline-item{grid-template-columns:126px 1fr;gap:44px;padding-bottom:34px}
-.timeline-year{color:var(--nb-ink);font-size:.9rem;letter-spacing:0}
-.timeline-content{padding:28px;background:var(--nb-surface);border:3px solid var(--nb-ink);box-shadow:5px 5px 0 var(--nb-ink)}
-.timeline-content::before{left:-55px;top:26px;width:16px;height:16px;border:3px solid var(--nb-ink);border-radius:0;background:var(--nb-accent);box-shadow:none}
-.timeline-content h3{color:var(--nb-ink)}.timeline-content .place,.timeline-content p{color:var(--nb-ink)}
-.research{background:var(--nb-accent);border-top:3px solid var(--nb-ink);border-bottom:3px solid var(--nb-ink)}
-.research-grid{gap:22px}.research-card{min-height:0;padding:30px;background:var(--nb-surface);border:3px solid var(--nb-ink);box-shadow:5px 5px 0 var(--nb-ink);transition:transform .15s ease,box-shadow .15s ease}
-.research-card:hover{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--nb-ink)}
-.research-card:nth-child(1){grid-column:span 2;background:var(--nb-ink);color:var(--nb-surface)}
-.research-card:nth-child(1) h3,.research-card:nth-child(1) p{color:var(--nb-surface)}
-.research-number,.research-icon{display:none}.research-card h3{color:var(--nb-ink);font-size:1.85rem}.research-card p{color:var(--nb-ink);font-size:.95rem}
-.featured{padding:110px 0;color:var(--nb-surface);background:var(--nb-ink)}.featured::after{display:none}.featured h2{color:var(--nb-surface);font-size:clamp(2.75rem,5vw,5rem)}.featured-intro{color:var(--nb-surface);font-size:1.05rem}
-.featured-box{padding:38px;background:var(--nb-surface);border:3px solid var(--nb-ink);box-shadow:10px 10px 0 var(--nb-accent);color:var(--nb-ink)}
-.featured-box .tag{padding:0;color:var(--nb-ink);background:transparent;font-size:.78rem;letter-spacing:0;text-transform:none}.featured-box h3{color:var(--nb-ink);font-size:2rem}.featured-box p,.featured-meta{color:var(--nb-ink);font-size:.96rem}.featured-meta{border-top:3px solid var(--nb-ink)}
-.publication-list{border-top:3px solid var(--nb-ink)}.publication{grid-template-columns:1fr auto;gap:24px;padding:26px 0;border-bottom:3px solid var(--nb-ink)}.publication:hover{padding-left:0;padding-right:0;background:transparent}.pub-number{display:none}.publication h3{color:var(--nb-ink);font-size:1.45rem}.publication p,.pub-year{color:var(--nb-ink);font-size:.9rem}
-.gallery{background:var(--nb-surface);border-top:3px solid var(--nb-ink);border-bottom:3px solid var(--nb-ink)}.gallery-grid{grid-template-columns:1.1fr .9fr .9fr;gap:22px}.gallery-card{overflow:visible;background:var(--nb-paper);border:3px solid var(--nb-ink);box-shadow:none}.gallery-card:nth-child(1){grid-row:span 2;background:var(--nb-accent)}.gallery-image{background:var(--nb-ink);border-bottom:3px solid var(--nb-ink)}.gallery-image img{height:100%;object-fit:cover}.gallery-card:nth-child(1) .gallery-image{height:calc(100% - 83px);aspect-ratio:auto}.gallery-caption{padding:16px}.gallery-caption h3{color:var(--nb-ink);font-size:1.1rem}.gallery-caption p{color:var(--nb-ink);font-size:.82rem}
-.schedule-wrap{border:3px solid var(--nb-ink);background:var(--nb-surface);box-shadow:var(--nb-shadow)}.schedule th,.schedule td{border-bottom:2px solid var(--nb-ink);color:var(--nb-ink);font-size:.85rem}.schedule th{color:var(--nb-ink);background:var(--nb-accent);font-size:.75rem;letter-spacing:0}.schedule tr:hover td{background:#fff0bd}.date,.event-name{color:var(--nb-ink)}.status{padding:4px 8px;border:2px solid var(--nb-ink);border-radius:0;color:var(--nb-ink);background:var(--nb-accent);font-size:.66rem;letter-spacing:0}.status.done{color:var(--nb-ink);background:var(--nb-surface)}
-.contact{background:var(--nb-paper);border-top:0}.contact-copy h2{color:var(--nb-ink);font-size:clamp(2.7rem,5vw,5rem);line-height:.92}.contact-copy>p,.contact-item span{color:var(--nb-ink);font-size:1rem}.contact-item strong{color:var(--nb-ink)}.contact-icon{border:3px solid var(--nb-ink);border-radius:0;color:var(--nb-ink);background:var(--nb-accent);font-weight:800}.contact-form{background:var(--nb-surface);border:3px solid var(--nb-ink);box-shadow:var(--nb-shadow)}.field label{color:var(--nb-ink);font-size:.85rem}.field input,.field textarea{border:3px solid var(--nb-ink);border-radius:0;color:var(--nb-ink);background:var(--nb-paper);font-size:.95rem}.field input:focus,.field textarea:focus{border-color:var(--nb-ink);box-shadow:4px 4px 0 var(--nb-accent)}
-footer{color:var(--nb-surface);background:var(--nb-ink)}.footer-brand h2,.footer-col h3{color:var(--nb-surface)}.footer-brand p,.footer-col a,.footer-bottom{color:var(--nb-surface)}.footer-col h3{font-size:.85rem;letter-spacing:0;text-transform:none}.footer-col a:hover{color:var(--nb-accent)}.footer-bottom{border-top:3px solid var(--nb-surface)}
-.back-top{width:48px;height:48px;border:3px solid var(--nb-ink);border-radius:0;color:var(--nb-ink);background:var(--nb-accent);box-shadow:5px 5px 0 var(--nb-ink);transition:transform .15s ease,opacity .15s ease,visibility .15s ease}.back-top:hover{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--nb-ink)}.back-top.show{transform:translateY(0)}
-@media(max-width:900px){.nav-links{border:3px solid var(--nb-ink);background:var(--nb-surface);box-shadow:var(--nb-shadow)}.research-card:nth-child(1){grid-column:auto}.gallery-grid{grid-template-columns:repeat(2,1fr)}.gallery-card:nth-child(1){grid-row:auto}.gallery-card:nth-child(1) .gallery-image{height:auto;aspect-ratio:4/3}}
-@media(max-width:680px){.section{padding:76px 0}.hero{padding:64px 0}.hero-copy h1{font-size:clamp(3.1rem,15vw,5.2rem)}.hero-meta{gap:16px}.timeline::before{left:8px}.timeline-content{box-shadow:4px 4px 0 var(--nb-ink)}.gallery-grid{grid-template-columns:1fr}.portrait-frame{box-shadow:10px 10px 0 var(--nb-accent)}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
-</style>
+  </script>
+
+  <style>
+    body {
+      background-color: #fbf6ea;
+      color: #121212;
+      background-image: radial-gradient(#121212 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .btn-brutal {
+      border: 3px solid #121212;
+      box-shadow: 4px 4px 0px #121212;
+      transition: all 0.15s ease;
+    }
+    .btn-brutal:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px #121212;
+    }
+    .btn-brutal:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0px 0px 0px #121212;
+    }
+
+    .card-brutal {
+      border: 3px solid #121212;
+      background: #ffffff;
+      box-shadow: 6px 6px 0px #121212;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-brutal:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0px #121212;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 25s linear infinite;
+    }
+  </style>
 </head>
+<body class="min-h-screen font-sans selection:bg-nb-yellow selection:text-black">
 
-<body>
-
-<header class="navbar">
-    <div class="container nav-inner">
-        <a href="#home" class="brand">
-            <strong>Ilhamcp511</strong>
-            <span>Academic Portfolio</span>
-        </a>
-
-        <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">Menu</button>
-
-        <nav>
-            <ul class="nav-links" id="navLinks">
-                <li><a class="active" href="#home">Beranda</a></li>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#education">Pendidikan</a></li>
-                <li><a href="#research">Penelitian</a></li>
-                <li><a href="#publications">Publikasi</a></li>
-                <li><a href="#gallery">Galeri</a></li>
-                <li><a href="#contact">Kontak</a></li>
-            </ul>
-        </nav>
+  <!-- TOP MARQUEE BANNER -->
+  <div class="bg-nb-yellow border-b-4 border-black py-2.5 overflow-hidden font-display text-xs sm:text-sm tracking-wider uppercase">
+    <div class="animate-marquee whitespace-nowrap flex items-center gap-6">
+      <span>✦ ILHAM CAHYA PURNAMA</span>
+      <span>✦ PROGRAM STUDI FISIKA</span>
+      <span>✦ UNIVERSITAS PENDIDIKAN INDONESIA (UPI)</span>
+      <span>✦ FPMIPA BANDUNG</span>
+      <span>✦ ASTRONOMI & ASTROFISIKA</span>
+      <span>✦ KOMPUTASI & DATA SAINS</span>
+      <span>✦ WEB MEKANIKA LIVE ON AZURE</span>
+      <span>✦ ILHAM CAHYA PURNAMA</span>
+      <span>✦ PROGRAM STUDI FISIKA</span>
+      <span>✦ UNIVERSITAS PENDIDIKAN INDONESIA (UPI)</span>
+      <span>✦ FPMIPA BANDUNG</span>
+      <span>✦ ASTRONOMI & ASTROFISIKA</span>
+      <span>✦ KOMPUTASI & DATA SAINS</span>
+      <span>✦ WEB MEKANIKA LIVE ON AZURE</span>
     </div>
-</header>
+  </div>
 
-<main>
+  <!-- STICKY NAVBAR -->
+  <header class="sticky top-0 z-40 bg-[#fbf6ea] border-b-4 border-black px-4 sm:px-8 py-3.5 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#home" class="font-display text-xl sm:text-2xl text-black flex items-center gap-2">
+        <span class="w-4 h-4 bg-nb-orange border-2 border-black inline-block shadow-[2px_2px_0px_#121212]"></span>
+        ilhamcp511
+      </a>
+      
+      <nav class="hidden lg:flex items-center gap-6 font-bold text-xs uppercase tracking-wide">
+        <a href="#home" class="hover:underline decoration-2">Beranda</a>
+        <a href="#about" class="hover:underline decoration-2">Tentang</a>
+        <a href="#education" class="hover:underline decoration-2">Pendidikan</a>
+        <a href="#research" class="hover:underline decoration-2">Penelitian</a>
+        <a href="#projects" class="hover:underline decoration-2">Proyek</a>
+        <a href="#publications" class="hover:underline decoration-2">Publikasi</a>
+        <a href="#gallery" class="hover:underline decoration-2">Galeri</a>
+        <a href="#schedule" class="hover:underline decoration-2">Jadwal</a>
+        <a href="#contact" class="hover:underline decoration-2">Kontak</a>
+      </nav>
 
-<section class="hero" id="home">
-    <div class="container hero-grid">
-        <div class="hero-copy">
-            <div class="eyebrow">Profil Akademik</div>
-            <h1>Ilham  <span>Cahya Purnama.</span></h1>
-            <p>
-                Mahasiswa Fisika dan pembelajar yang memiliki ketertarikan pada ilmu pengetahuan,
-                penelitian, teknologi, serta pengembangan solusi berbasis sains.
-            </p>
+      <a href="#contact" class="btn-brutal px-4 py-2 bg-nb-yellow border-2 border-black font-display text-xs shadow-[3px_3px_0px_#121212]">
+        HUBUNGI SAYA
+      </a>
+    </div>
+  </header>
 
-            <div class="hero-actions">
-                <a class="btn btn-primary" href="#about">Tentang Saya</a>
-                <a class="btn btn-outline" href="#research">Lihat Penelitian</a>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-20">
+
+    <!-- ================= 1. HERO SECTION ================= -->
+    <section id="home" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
+      
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-nb-green border-2 border-black shadow-[3px_3px_0px_#121212] font-display text-xs uppercase">
+          <span class="w-2.5 h-2.5 rounded-full bg-black animate-ping"></span>
+          PROFIL AKADEMIK MAHASISWA
+        </div>
+
+        <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl leading-[0.95] text-black tracking-tight">
+          ILHAM CAHYA<br>
+          <span class="bg-nb-yellow px-2 border-2 border-black shadow-[5px_5px_0px_#121212] inline-block my-1">PURNAMA</span>
+        </h1>
+
+        <p class="text-zinc-800 text-base sm:text-lg font-medium leading-relaxed max-w-xl">
+          Mahasiswa Fisika dan pembelajar yang memiliki ketertarikan pada ilmu pengetahuan, penelitian, teknologi, serta pengembangan solusi berbasis sains.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#about" class="btn-brutal px-6 py-3.5 bg-nb-yellow border-3 border-black font-display text-sm shadow-brutal text-black">
+            TENTANG SAYA
+          </a>
+          <a href="#research" class="btn-brutal px-6 py-3.5 bg-white border-3 border-black font-display text-sm shadow-brutal text-black">
+            LIHAT PENELITIAN
+          </a>
+          <a href="#projects" class="btn-brutal px-6 py-3.5 bg-nb-orange text-white border-3 border-black font-display text-sm shadow-brutal flex items-center gap-2">
+            WEB MEKANIKA (AZURE) <i data-lucide="external-link" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Meta Info Pills -->
+        <div class="grid grid-cols-3 gap-3 pt-4 border-t-3 border-black text-xs font-bold">
+          <div>
+            <div class="text-zinc-500 uppercase text-[10px]">BIDANG</div>
+            <div class="font-display">FISIKA</div>
+          </div>
+          <div>
+            <div class="text-zinc-500 uppercase text-[10px]">INSTITUSI</div>
+            <div class="font-display">UPI BANDUNG</div>
+          </div>
+          <div>
+            <div class="text-zinc-500 uppercase text-[10px]">LOKASI</div>
+            <div class="font-display">BANDUNG, ID</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Photo Frame -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative w-full max-w-sm">
+          <div class="absolute -top-4 -left-4 w-full h-full bg-nb-purple border-3 border-black shadow-brutal-xl"></div>
+          
+          <div class="relative bg-white border-4 border-black p-4 shadow-brutal-lg rotate-1">
+            <div class="overflow-hidden border-2 border-black bg-zinc-900 aspect-[4/5] relative">
+              <img src="image/profil.jpg" alt="Foto Profil Ilham Cahya Purnama" 
+                   class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-300">
+              <span class="absolute bottom-3 left-3 bg-nb-yellow border-2 border-black px-2.5 py-0.5 text-[11px] font-display">
+                ILHAM C. PURNAMA
+              </span>
             </div>
-
-            <div class="hero-meta">
-                <div class="meta-item">
-                    <strong>Bidang</strong>
-                    <span>Fisika</span>
-                </div>
-                <div class="meta-item">
-                    <strong>Institusi</strong>
-                    <span>Universitas Pendidikan Indonesia</span>
-                </div>
-                <div class="meta-item">
-                    <strong>Lokasi</strong>
-                    <span>Bandung, Indonesia</span>
-                </div>
+            <div class="mt-3 flex items-center justify-between font-display text-xs">
+              <span>FISIKA FPMIPA UPI</span>
+              <span class="bg-nb-green px-2 py-0.5 border border-black">2025/2026</span>
             </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= 2. TENTANG SAYA ================= -->
+    <section id="about" class="card-brutal p-6 sm:p-10 bg-nb-card relative overflow-hidden">
+      <div class="max-w-3xl">
+        <span class="bg-nb-blue text-white px-3 py-1 font-display text-xs border-2 border-black shadow-[2px_2px_0px_#121212]">
+          TENTANG SAYA
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl text-black mt-3 mb-4">
+          TENTANG SAYA.
+        </h2>
+        
+        <p class="text-zinc-800 text-sm sm:text-base leading-relaxed">
+          Saya adalah mahasiswa yang memiliki ketertarikan pada proses belajar, penelitian, dan penerapan ilmu pengetahuan untuk memahami berbagai permasalahan di sekitar.
+        </p>
+
+        <p class="text-zinc-800 text-sm sm:text-base leading-relaxed mt-4">
+          Website ini menjadi ruang untuk mendokumentasikan perjalanan akademik, pengalaman, proyek, publikasi, kegiatan, serta gagasan yang sedang dikembangkan.
+        </p>
+
+        <!-- Signature Quote -->
+        <div class="my-6 p-6 bg-nb-yellow border-3 border-black shadow-brutal">
+          <p class="font-display text-lg sm:text-2xl text-black leading-snug">
+            “Belajar bukan hanya memahami apa yang sudah diketahui, tetapi juga berani mencari tahu apa yang belum diketahui.”
+          </p>
+          <span class="block mt-2 font-bold text-xs uppercase tracking-wider text-zinc-800">
+            — Ilham Cahya Purnama
+          </span>
         </div>
 
-        <div class="hero-visual">
-            <div class="portrait-frame">
-                <img src="image/profil.jpg" alt="Foto Profil Ilham Cahya Purnama" class="portrait-image">
+        <p class="text-zinc-800 text-sm sm:text-base leading-relaxed">
+          Fokus saya terus berkembang melalui perkuliahan, eksperimen, kegiatan penelitian, kolaborasi, dan berbagai proyek berbasis sains serta teknologi.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 3. PENDIDIKAN & PENGALAMAN ================= -->
+    <section id="education" class="space-y-6">
+      <div>
+        <span class="bg-nb-purple px-3 py-1 font-display text-xs border-2 border-black shadow-[2px_2px_0px_#121212]">
+          PERJALANAN AKADEMIK
+        </span>
+        <h2 class="font-display text-3xl sm:text-5xl mt-2">PENDIDIKAN & PENGALAMAN</h2>
+        <p class="text-zinc-700 font-medium text-xs sm:text-sm mt-1 max-w-xl">
+          Beberapa tahapan pendidikan dan pengalaman yang membentuk perjalanan akademik.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- UPI -->
+        <div class="card-brutal p-6 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="bg-nb-green px-2.5 py-0.5 border-2 border-black font-display text-xs">2025 - SEKARANG</span>
+              <span class="font-mono text-xs text-zinc-500 font-bold">PERGURUAN TINGGI</span>
             </div>
-            <span class="leaf one"></span>
-            <span class="leaf two"></span>
-            <span class="leaf three"></span>
-        </div>
-    </div>
-</section>
-
-<section class="section about" id="about">
-    <div class="container about-grid">
-        <div class="about-label">
-            <div class="eyebrow">Tentang</div>
-            <h2>Tentang<br>Saya.</h2>
+            <h3 class="font-display text-2xl mb-1">PROGRAM STUDI FISIKA</h3>
+            <div class="text-nb-orange font-bold text-xs sm:text-sm mb-3">Universitas Pendidikan Indonesia (UPI Bandung)</div>
+            <p class="text-zinc-700 text-xs sm:text-sm leading-relaxed">
+              Mempelajari fisika dasar, matematika, eksperimen, pemrograman, analisis data, dan bidang-bidang fisika terapan.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t-2 border-black font-display text-xs text-zinc-600">
+            FPMIPA UPI • BANDUNG
+          </div>
         </div>
 
-        <div class="about-card">
-            <p>
-                Saya adalah mahasiswa yang memiliki ketertarikan pada proses belajar,
-                penelitian, dan penerapan ilmu pengetahuan untuk memahami berbagai
-                permasalahan di sekitar.
-            </p>
-            <p>
-                Website ini menjadi ruang untuk mendokumentasikan perjalanan akademik,
-                pengalaman, proyek, publikasi, kegiatan, serta gagasan yang sedang
-                dikembangkan.
-            </p>
-
-            <div class="quote">
-                “Belajar bukan hanya memahami apa yang sudah diketahui,
-                tetapi juga berani mencari tahu apa yang belum diketahui.”
+        <!-- SMAN 1 Sariwangi -->
+        <div class="card-brutal p-6 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="bg-nb-yellow px-2.5 py-0.5 border-2 border-black font-display text-xs">LULUS 2024</span>
+              <span class="font-mono text-xs text-zinc-500 font-bold">MENENGAH ATAS</span>
             </div>
-
-            <p>
-                Fokus saya terus berkembang melalui perkuliahan, eksperimen,
-                kegiatan penelitian, kolaborasi, dan berbagai proyek berbasis sains
-                serta teknologi.
+            <h3 class="font-display text-2xl mb-1">PENDIDIKAN SEBELUMNYA</h3>
+            <div class="text-nb-orange font-bold text-xs sm:text-sm mb-3">SMA Negeri 1 Sariwangi, Kab. Tasikmalaya, Jawa Barat</div>
+            <p class="text-zinc-700 text-xs sm:text-sm leading-relaxed">
+              Tahap pendidikan yang menjadi fondasi untuk melanjutkan studi dan mengembangkan minat pada bidang sains dan matematika.
             </p>
-        </div>
-    </div>
-</section>
-
-<section class="section" id="education">
-    <div class="container">
-        <div class="section-heading">
-            <div class="eyebrow">Perjalanan Akademik</div>
-            <h2>Pendidikan & Pengalaman</h2>
-            <p>
-                Beberapa tahapan pendidikan dan pengalaman yang membentuk perjalanan akademik.
-            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t-2 border-black font-display text-xs text-zinc-600">
+            TASIKMALAYA • JAWA BARAT
+          </div>
         </div>
 
-        <div class="timeline">
+      </div>
+    </section>
 
-
-            <article class="timeline-item">
-                <div class="timeline-year">2025 - Sekarang</div>
-                <div class="timeline-content">
-                    <h3>Program Studi Fisika</h3>
-                    <div class="place">Universitas Pendidikan Indonesia</div>
-                    <p>
-                        Mempelajari fisika dasar, matematika, eksperimen, pemrograman,
-                        analisis data, dan bidang-bidang fisika terapan.
-                    </p>
-                </div>
-            </article>
-
-            <article class="timeline-item">
-                <div class="timeline-year">2024</div>
-                <div class="timeline-content">
-                    <h3>Pendidikan Sebelumnya</h3>
-                    <div class="place">SMA Negeri 1 Sariwangi, Kab.Tasikmalaya, Jawa Barat, Indonesia</div>
-                    <p>
-                        Tahap pendidikan yang menjadi fondasi untuk melanjutkan studi
-                        dan mengembangkan minat pada bidang sains.
-                    </p>
-                </div>
-            </article>
-        </div>
-    </div>
-</section>
-
-<section class="section research" id="research">
-    <div class="container">
-        <div class="section-heading">
-            <div class="eyebrow">Eksplorasi</div>
-            <h2>Minat Penelitian</h2>
-            <p>
-                Beberapa bidang yang sedang dipelajari dan dikembangkan sebagai bagian
-                dari perjalanan akademik.
-            </p>
-        </div>
-
-        <div class="research-grid">
-            <article class="research-card">
-                <div class="research-number">01 / PHYSICS</div>
-                <div class="research-icon">◈</div>
-                <h3>Fisika</h3>
-                <p>
-                    Eksplorasi konsep fisika, eksperimen, pemodelan, dan penerapannya
-                    dalam permasalahan nyata.
-                </p>
-            </article>
-
-            <article class="research-card">
-                <div class="research-number">02 / ASTRONOMY</div>
-                <div class="research-icon">◇</div>
-                <h3>Astronomi</h3>
-                <p>
-                        Ketertarikan terhadap langit, benda langit, dan fenomena alam semesta melalui pengamatan dan penelitian.
-                </p>
-            </article>
-
-            <article class="research-card">
-                <div class="research-number">03 / COMPUTATION</div>
-                <div class="research-icon">⌘</div>
-                <h3>Komputasi & Data</h3>
-                <p>
-                    Pemanfaatan pemrograman, analisis data, dan model komputasi
-                    untuk mendukung penelitian.
-                </p>
-            </article>
-
-            <article class="research-card">
-                <div class="research-number">04 / INSTRUMENTATION</div>
-                <div class="research-icon">△</div>
-                <h3>Instrumentasi</h3>
-                <p>
-                    Pengembangan sistem pengukuran dan teknologi untuk memperoleh
-                    data eksperimen secara lebih efektif.
-                </p>
-            </article>
-
-            <article class="research-card wide">
-                <div class="research-number">05 / APPLIED SCIENCE</div>
-                <div class="research-icon">✦</div>
-                <h3>Sains Terapan & Teknologi</h3>
-                <p>
-                    Menghubungkan konsep sains dengan teknologi untuk menghasilkan
-                    solusi yang dapat diterapkan pada kebutuhan masyarakat dan lingkungan.
-                </p>
-            </article>
-        </div>
-    </div>
-</section>
-
-<section class="featured">
-    <div class="container featured-grid">
+    <!-- ================= 4. MINAT PENELITIAN ================= -->
+    <section id="research" class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-            <div class="eyebrow">Proyek Unggulan</div>
-            <h2>Proyek Pilihan</h2>
-            <p class="featured-intro">
-                Satu karya yang dapat dibuka langsung untuk melihat web mekanika.
+          <span class="bg-nb-yellow px-3 py-1 font-display text-xs border-2 border-black shadow-[2px_2px_0px_#121212]">
+            EKSPLORASI
+          </span>
+          <h2 class="font-display text-3xl sm:text-5xl mt-2">MINAT PENELITIAN</h2>
+        </div>
+        <p class="text-zinc-700 font-medium text-xs sm:text-sm max-w-md">
+          Beberapa bidang yang sedang dipelajari dan dikembangkan sebagai bagian dari perjalanan akademik.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- 01 Fisika -->
+        <div class="card-brutal p-6 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-display text-3xl text-nb-orange">01 / PHYSICS</span>
+              <span class="p-2 bg-nb-yellow border-2 border-black shadow-[2px_2px_0px_#121212]">◈</span>
+            </div>
+            <h3 class="font-display text-2xl mb-2">FISIKA</h3>
+            <p class="text-zinc-700 text-xs sm:text-sm leading-relaxed">
+              Eksplorasi konsep fisika, eksperimen, pemodelan, dan penerapannya dalam permasalahan nyata.
             </p>
+          </div>
+          <div class="mt-4 pt-3 border-t-2 border-black font-display text-xs text-zinc-500">
+            KONSEP & EKSPERIMEN
+          </div>
         </div>
 
-        <article class="featured-box">
-            <span class="tag">Proyek web</span>
-            <h3>Web Mekanika</h3>
-            <p>
-                Website bertema mekanika yang dapat diakses melalui tautan proyek.
-            </p>
-
-            <div class="featured-meta">
-                <span>Website</span>
-                <span>Mekanika</span>
+        <!-- 02 Astronomi -->
+        <div class="card-brutal p-6 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-display text-3xl text-nb-blue">02 / ASTRONOMY</span>
+              <span class="p-2 bg-nb-blue text-white border-2 border-black shadow-[2px_2px_0px_#121212]">◇</span>
             </div>
-
-            <div style="margin-top:24px">
-                <a href="https://fismod-fzafaya8dnazbnad.indonesiacentral-01.azurewebsites.net/" class="btn btn-light" target="_blank" rel="noopener noreferrer">Buka Web Mekanika</a>
-            </div>
-        </article>
-    </div>
-</section>
-
-<section class="section" id="publications">
-    <div class="container">
-        <div class="section-heading">
-            <div class="eyebrow">Karya</div>
-            <h2>Publikasi & Proyek Terbaru</h2>
-            <p>
-                Daftar publikasi, laporan, proyek, atau karya akademik yang dapat
-                ditambahkan secara berkala.
+            <h3 class="font-display text-2xl mb-2">ASTRONOMI</h3>
+            <p class="text-zinc-700 text-xs sm:text-sm leading-relaxed">
+              Ketertarikan terhadap langit, benda langit, dan fenomena alam semesta melalui pengamatan dan penelitian.
             </p>
+          </div>
+          <div class="mt-4 pt-3 border-t-2 border-black font-display text-xs text-zinc-500">
+            BENDA LANGIT & ALAM SEMESTA
+          </div>
         </div>
 
-        <div class="publication-list">
-            <article class="publication">
-                <div class="pub-number">00</div>
-                <div>
-                    <h3>None</h3>
-                    <p>-</p>
-                </div>
-                <div class="pub-year">2026</div>
-            </article>
+        <!-- 03 Komputasi & Data -->
+        <div class="card-brutal p-6 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-display text-3xl text-nb-green">03 / COMPUTATION</span>
+              <span class="p-2 bg-nb-green border-2 border-black shadow-[2px_2px_0px_#121212]">⌘</span>
+            </div>
+            <h3 class="font-display text-2xl mb-2">KOMPUTASI & DATA</h3>
+            <p class="text-zinc-700 text-xs sm:text-sm leading-relaxed">
+              Pemanfaatan pemrograman, analisis data, dan model komputasi untuk mendukung penelitian.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t-2 border-black font-display text-xs text-zinc-500">
+            PEMROGRAMAN & DATA SAINS
+          </div>
+        </div>
 
+        <!-- 04 Instrumentasi -->
+        <div class="card-brutal p-6 bg-white flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-display text-3xl text-nb-purple">04 / INSTRUMENTATION</span>
+              <span class="p-2 bg-nb-purple border-2 border-black shadow-[2px_2px_0px_#121212]">△</span>
+            </div>
+            <h3 class="font-display text-2xl mb-2">INSTRUMENTASI</h3>
+            <p class="text-zinc-700 text-xs sm:text-sm leading-relaxed">
+              Pengembangan sistem pengukuran dan teknologi untuk memperoleh data eksperimen secara lebih efektif.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t-2 border-black font-display text-xs text-zinc-500">
+            SISTEM PENGUKURAN LAB
+          </div>
+        </div>
+
+        <!-- 05 Sains Terapan (Col span 2) -->
+        <div class="card-brutal p-6 bg-nb-yellow md:col-span-2 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-display text-3xl text-black">05 / APPLIED SCIENCE</span>
+              <span class="p-2 bg-white border-2 border-black shadow-[2px_2px_0px_#121212]">✦</span>
+            </div>
+            <h3 class="font-display text-2xl mb-2">SAINS TERAPAN & TEKNOLOGI</h3>
+            <p class="text-zinc-900 text-xs sm:text-base leading-relaxed font-medium">
+              Menghubungkan konsep sains dengan teknologi untuk menghasilkan solusi yang dapat diterapkan pada kebutuhan masyarakat dan lingkungan.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t-2 border-black font-display text-xs text-zinc-800">
+            SOLUSI NYATA MASYARAKAT
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 5. PROYEK UNGGULAN ================= -->
+    <section id="projects" class="card-brutal p-6 sm:p-10 bg-nb-ink text-white relative">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <span class="bg-nb-yellow text-black px-3 py-1 font-display text-xs border-2 border-white shadow-[2px_2px_0px_#fff]">
+            PROYEK UNGGULAN
+          </span>
+          <h2 class="font-display text-3xl sm:text-5xl text-white">
+            PROYEK PILIHAN
+          </h2>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+            Satu karya yang dapat dibuka langsung untuk melihat web mekanika.
+          </p>
+
+          <div class="p-4 bg-zinc-900 border-2 border-zinc-700 space-y-2">
+            <span class="bg-nb-yellow text-black font-display text-[10px] px-2 py-0.5">PROYEK WEB</span>
+            <h3 class="font-display text-2xl text-white">Web Mekanika</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm">
+              Website bertema mekanika yang dapat diakses melalui tautan proyek.
+            </p>
+            <div class="flex gap-4 pt-2 text-xs font-mono text-zinc-400 border-t border-zinc-800">
+              <span>Kategori: Website</span>
+              <span>Tema: Mekanika</span>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <a href="https://fismod-fzafaya8dnazbnad.indonesiacentral-01.azurewebsites.net/" target="_blank" rel="noopener noreferrer"
+               class="btn-brutal inline-flex items-center gap-2 px-6 py-3.5 bg-nb-yellow text-black font-display text-sm border-3 border-white shadow-[5px_5px_0px_#fff]">
+              BUKA WEB MEKANIKA <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-zinc-800 border-3 border-white p-6 shadow-[8px_8px_0px_#ffde59]">
+          <div class="font-display text-sm text-nb-yellow mb-2">DEPLOYMENT INFO</div>
+          <div class="text-xs font-mono space-y-2 text-zinc-300">
+            <div>HOST: <span class="text-white">azurewebsites.net</span></div>
+            <div>STATUS: <span class="text-nb-green font-bold">200 OK (ONLINE)</span></div>
+            <div>REGION: <span class="text-white">Indonesia Central</span></div>
+            <div>GITHUB: <span class="text-white">ilhamcahyap</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6. PUBLIKASI & KARYA TERBARU ================= -->
+    <section id="publications" class="space-y-6">
+      <div>
+        <span class="bg-nb-orange text-white px-3 py-1 font-display text-xs border-2 border-black shadow-[2px_2px_0px_#121212]">
+          KARYA ILMIAH
+        </span>
+        <h2 class="font-display text-3xl sm:text-5xl mt-2">PUBLIKASI & PROYEK TERBARU</h2>
+        <p class="text-zinc-700 font-medium text-xs sm:text-sm mt-1 max-w-xl">
+          Daftar publikasi, laporan, proyek, atau karya akademik yang dapat ditambahkan secara berkala.
+        </p>
+      </div>
+
+      <div class="card-brutal p-6 bg-white">
+        <div class="flex items-center justify-between py-4 border-b-2 border-black">
+          <div class="flex items-center gap-4">
+            <span class="font-display text-2xl text-zinc-400">00</span>
+            <div>
+              <h4 class="font-display text-lg">Publikasi Mendatang</h4>
+              <p class="text-zinc-500 text-xs">Sedang dalam proses penyusunan dan penelitian eksperimen.</p>
+            </div>
+          </div>
+          <span class="font-display text-sm bg-nb-yellow px-3 py-1 border-2 border-black">2026</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 7. GALERI KEGIATAN LENGKAP (6 FOTO ASLI) ================= -->
+    <section id="gallery" class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="bg-nb-green px-3 py-1 font-display text-xs border-2 border-black shadow-[2px_2px_0px_#121212]">
+            DOKUMENTASI
+          </span>
+          <h2 class="font-display text-3xl sm:text-5xl mt-2">GALERI KEGIATAN LENGKAP</h2>
+        </div>
+        <p class="text-zinc-700 font-medium text-xs sm:text-sm max-w-md">
+          Dokumentasi kegiatan akademik, eksperimen, seminar, proyek, dan aktivitas lainnya.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Foto 1 -->
+        <div class="card-brutal p-3 bg-white flex flex-col justify-between">
+          <div class="border-2 border-black overflow-hidden aspect-[4/3] bg-zinc-100">
+            <img src="image/kegiatan-1.jpg" alt="Kegiatan Praktikum" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="mt-3 p-1">
+            <span class="bg-nb-yellow px-2 py-0.5 text-[10px] font-display border border-black">PRAKTIKUM</span>
+            <h4 class="font-display text-base mt-1">Eksperimen Laboratorium</h4>
+            <p class="text-zinc-600 text-xs">Dokumentasi kegiatan eksperimen praktikum fisika.</p>
+          </div>
+        </div>
+
+        <!-- Foto 2 -->
+        <div class="card-brutal p-3 bg-white flex flex-col justify-between">
+          <div class="border-2 border-black overflow-hidden aspect-[4/3] bg-zinc-100">
+            <img src="image/kegiatan-2.jpg" alt="Kuliah Olahraga dan Kebugaran" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="mt-3 p-1">
+            <span class="bg-nb-orange text-white px-2 py-0.5 text-[10px] font-display border border-black">OLAHRAGA</span>
+            <h4 class="font-display text-base mt-1">Olahraga dan Kebugaran</h4>
+            <p class="text-zinc-600 text-xs">Dokumentasi kuliah olahraga dan kebugaran.</p>
+          </div>
+        </div>
+
+        <!-- Foto 3 -->
+        <div class="card-brutal p-3 bg-white flex flex-col justify-between">
+          <div class="border-2 border-black overflow-hidden aspect-[4/3] bg-zinc-100">
+            <img src="image/kegiatan-3.jpg" alt="Kuliah Lapangan" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="mt-3 p-1">
+            <span class="bg-nb-blue text-white px-2 py-0.5 text-[10px] font-display border border-black">KULIAH LAPANGAN</span>
+            <h4 class="font-display text-base mt-1">Kuliah Lapangan</h4>
+            <p class="text-zinc-600 text-xs">Dokumentasi kuliah lapangan KDBA di Imah noong dalam mengamati benda langit.</p>
+          </div>
+        </div>
+
+        <!-- Foto 4 -->
+        <div class="card-brutal p-3 bg-white flex flex-col justify-between">
+          <div class="border-2 border-black overflow-hidden aspect-[4/3] bg-zinc-100">
+            <img src="image/kegiatan-4.jpg" alt="Kepanitiaan" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="mt-3 p-1">
+            <span class="bg-nb-purple px-2 py-0.5 text-[10px] font-display border border-black">KEPANITIAAN</span>
+            <h4 class="font-display text-base mt-1">Kepanitiaan</h4>
+            <p class="text-zinc-600 text-xs">Kegiatan panitiaan acara PASOSORE.</p>
+          </div>
+        </div>
+
+        <!-- Foto 5 -->
+        <div class="card-brutal p-3 bg-white flex flex-col justify-between">
+          <div class="border-2 border-black overflow-hidden aspect-[4/3] bg-zinc-100">
+            <img src="image/kegiatan-5.jpg" alt="Perayaan" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="mt-3 p-1">
+            <span class="bg-nb-green px-2 py-0.5 text-[10px] font-display border border-black">PERAYAAN</span>
+            <h4 class="font-display text-base mt-1">Perayaan</h4>
+            <p class="text-zinc-600 text-xs">Ikut merayakan pengukuhan Guru Besar.</p>
+          </div>
+        </div>
+
+        <!-- Foto 6 -->
+        <div class="card-brutal p-3 bg-white flex flex-col justify-between">
+          <div class="border-2 border-black overflow-hidden aspect-[4/3] bg-zinc-100">
+            <img src="image/kegiatan-6.jpg" alt="Kegiatan Akademik" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="mt-3 p-1">
+            <span class="bg-nb-yellow px-2 py-0.5 text-[10px] font-display border border-black">AKADEMIK</span>
+            <h4 class="font-display text-base mt-1">Kegiatan Akademik</h4>
+            <p class="text-zinc-600 text-xs">Aktivitas dan kolaborasi akademik.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 8. JADWAL KULIAH LENGKAP (10 MATA KULIAH) ================= -->
+    <section id="schedule" class="card-brutal p-6 sm:p-8 bg-white">
+      <div class="pb-4 mb-4 border-b-3 border-black">
+        <span class="bg-nb-yellow px-3 py-1 font-display text-xs border-2 border-black shadow-[2px_2px_0px_#121212]">
+          AGENDA
+        </span>
+        <h2 class="font-display text-2xl sm:text-4xl mt-2">JADWAL KULIAH AKTIF</h2>
+        <p class="text-zinc-600 text-xs sm:text-sm mt-1">
+          Contoh jadwal kuliah yang dapat diperbarui sesuai kebutuhan semester berjalan di FPMIPA UPI.
+        </p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs sm:text-sm border-3 border-black font-medium">
+          <thead class="bg-nb-yellow font-display text-xs uppercase border-b-3 border-black">
+            <tr>
+              <th class="p-3 border-r-2 border-black text-center">No.</th>
+              <th class="p-3 border-r-2 border-black">Hari</th>
+              <th class="p-3 border-r-2 border-black">Waktu</th>
+              <th class="p-3 border-r-2 border-black">Kuliah</th>
+              <th class="p-3 border-r-2 border-black">Tempat</th>
+              <th class="p-3 text-center">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y-2 divide-black">
             
-        </div>
-    </div>
-</section>
-<section class="section gallery" id="gallery">
-    <div class="container">
-        <div class="section-heading">
-            <div class="eyebrow">Dokumentasi</div>
-            <h2>Galeri</h2>
-            <p>
-                Dokumentasi kegiatan akademik, eksperimen, seminar, proyek, dan aktivitas lainnya.
-            </p>
-        </div>
+            <tr class="hover:bg-amber-50">
+              <td class="p-3 font-mono text-center border-r-2 border-black font-bold">01</td>
+              <td class="p-3 font-bold border-r-2 border-black">Senin</td>
+              <td class="p-3 border-r-2 border-black font-mono">07:00 - 08:40</td>
+              <td class="p-3 font-bold border-r-2 border-black">Fisika Modern</td>
+              <td class="p-3 border-r-2 border-black">JICA lt3.305</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 bg-nb-yellow border border-black font-display text-[10px]">PROSES</span></td>
+            </tr>
 
-        <div class="gallery-grid">
-            <article class="gallery-card">
-                <div class="gallery-image">
-                    <img src="image/kegiatan-1.jpg" alt="Kegiatan praktikum">
-                </div>
-                <div class="gallery-caption">
-                    <h3>Eksperimen Laboratorium</h3>
-                    <p>Dokumentasi kegiatan eksperimen.</p>
-                </div>
-            </article>
+            <tr class="hover:bg-amber-50">
+              <td class="p-3 font-mono text-center border-r-2 border-black font-bold">02</td>
+              <td class="p-3 font-bold border-r-2 border-black">Senin</td>
+              <td class="p-3 border-r-2 border-black font-mono">13:00 - 15:30</td>
+              <td class="p-3 font-bold border-r-2 border-black">Elektronika Analog</td>
+              <td class="p-3 border-r-2 border-black">JICA lt3.Lab Elektronika</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 bg-nb-yellow border border-black font-display text-[10px]">PROSES</span></td>
+            </tr>
 
-            <article class="gallery-card">
-                <div class="gallery-image">
-                    <img src="image/kegiatan-2.jpg" alt="Kuliah olahraga dan kebugaran">
-                </div>
-                <div class="gallery-caption">
-                    <h3>Olahraga dan Kebugaran</h3>
-                    <p>Dokumentasi kuliah olahraga dan kebugaran.</p>
-                </div>
-            </article>
+            <tr class="hover:bg-amber-50">
+              <td class="p-3 font-mono text-center border-r-2 border-black font-bold">03</td>
+              <td class="p-3 font-bold border-r-2 border-black">Selasa</td>
+              <td class="p-3 border-r-2 border-black font-mono">08:40 - 10:20</td>
+              <td class="p-3 font-bold border-r-2 border-black">Fisika Modern</td>
+              <td class="p-3 border-r-2 border-black">JICA lt3.302</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 bg-nb-yellow border border-black font-display text-[10px]">PROSES</span></td>
+            </tr>
 
-            <article class="gallery-card">
-                <div class="gallery-image">
-                    <img src="image/kegiatan-3.jpg" alt="Kuliah Lapangan">
-                </div>
-                <div class="gallery-caption">
-                    <h3>Kuliah Lapangan</h3>
-                    <p>Dokumentasi kuliah lapangan KDBA di Imah noong dalam mengamati benda langit</p>
-                </div>
-            </article>
+            <tr class="hover:bg-amber-50">
+              <td class="p-3 font-mono text-center border-r-2 border-black font-bold">04</td>
+              <td class="p-3 font-bold border-r-2 border-black">Rabu</td>
+              <td class="p-3 border-r-2 border-black font-mono">08:40 - 10:20</td>
+              <td class="p-3 font-bold border-r-2 border-black">Olahraga dan Kebugaran</td>
+              <td class="p-3 border-r-2 border-black">Gymnasium</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 bg-nb-yellow border border-black font-display text-[10px]">PROSES</span></td>
+            </tr>
 
-            <article class="gallery-card">
-                <div class="gallery-image">
-                    <img src="image/kegiatan-4.jpg" alt="Proyek">
-                </div>
-                <div class="gallery-caption">
-                    <h3>Kepanitiaan</h3>
-                    <p>kegiatan panitiaan acara PASOSORE</p>
-                </div>
-            </article>
+            <tr class="hover:bg-amber-50">
+              <td class="p-3 font-mono text-center border-r-2 border-black font-bold">05</td>
+              <td class="p-3 font-bold border-r-2 border-black">Rabu</td>
+              <td class="p-3 border-r-2 border-black font-mono">10:20 - 12:00</td>
+              <td class="p-3 font-bold border-r-2 border-black">Seminar Pendidikan Agama Islam</td>
+              <td class="p-3 border-r-2 border-black">JICA lt3.304</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 bg-nb-yellow border border-black font-display text-[10px]">PROSES</span></td>
+            </tr>
 
-            <article class="gallery-card">
-                <div class="gallery-image">
-                    <img src="image/kegiatan-5.jpg" alt="Observasi Lapangan">
-                </div>
-                <div class="gallery-caption">
-                    <h3>Perayaan</h3>
-                    <p>Ikut merayakan pengukuhan Guru Besar.</p>
-                </div>
-            </article>
+            <tr class="hover:bg-amber-50">
+              <td class="p-3 font-mono text-center border-r-2 border-black font-bold">06</td>
+              <td class="p-3 font-bold border-r-2 border-black">Rabu</td>
+              <td class="p-3 border-r-2 border-black font-mono">13:00 - 14:40</td>
+              <td class="p-3 font-bold border-r-2 border-black">Teknologi Informasi dan Komunikasi</td>
+              <td class="p-3 border-r-2 border-black">JICA lt4.402</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 bg-nb-yellow border border-black font-display text-[10px]">PROSES</span></td>
+            </tr>
 
-            <article class="gallery-card">
-                <div class="gallery-image">
-                    <img src="image/kegiatan-6.jpg" alt="Kegiatan Akademik">
-                </div>
-                <div class="gallery-caption">
-                    <h3>Kegiatan Akademik</h3>
-                    <p>Aktivitas dan kolaborasi akademik.</p>
-                </div>
-            </article>
-        </div>
-    </div>
-</section>
+            <tr class="hover:bg-amber-50">
+              <td class="p-3 font-mono text-center border-r-2 border-black font-bold">07</td>
+              <td class="p-3 font-bold border-r-2 border-black">Kamis</td>
+              <td class="p-3 border-r-2 border-black font-mono">08:40 - 10:20</td>
+              <td class="p-3 font-bold border-r-2 border-black">Mekanika</td>
+              <td class="p-3 border-r-2 border-black">JICA lt3.302</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 bg-nb-yellow border border-black font-display text-[10px]">PROSES</span></td>
+            </tr>
 
+            <tr class="hover:bg-amber-50">
+              <td class="p-3 font-mono text-center border-r-2 border-black font-bold">08</td>
+              <td class="p-3 font-bold border-r-2 border-black">Kamis</td>
+              <td class="p-3 border-r-2 border-black font-mono">13:00 - 15:30</td>
+              <td class="p-3 font-bold border-r-2 border-black">Matematika Fisika II</td>
+              <td class="p-3 border-r-2 border-black">fpmipa-C lt3.302</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 bg-nb-yellow border border-black font-display text-[10px]">PROSES</span></td>
+            </tr>
 
-<section class="section" id="schedule">
-    <div class="container">
-        <div class="section-heading">
-            <div class="eyebrow">Agenda</div>
-            <h2>Jadwal Kuliah</h2>
-            <p>
-                Contoh jadwal kuliah yang dapat diperbarui sesuai kebutuhan.
-            </p>
-        </div>
+            <tr class="hover:bg-amber-50">
+              <td class="p-3 font-mono text-center border-r-2 border-black font-bold">09</td>
+              <td class="p-3 font-bold border-r-2 border-black">Jum'at</td>
+              <td class="p-3 border-r-2 border-black font-mono">07:00 - 08:40</td>
+              <td class="p-3 font-bold border-r-2 border-black">Landasan Pendidikan</td>
+              <td class="p-3 border-r-2 border-black">Gedung FPMIPA-B lt3..304</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 bg-nb-yellow border border-black font-display text-[10px]">PROSES</span></td>
+            </tr>
 
-        <div class="schedule-wrap">
-            <table class="schedule">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Hari</th>
-                        <th>Waktu</th>
-                        <th>Kuliah</th>
-                        <th>Tempat</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>01</td>
-                        <td class="date">Senin</td>
-                        <td>07:00 - 08:40</td>
-                        <td class="event-name">Fisika Modern</td>
-                        <td>JICA lt3.305</td>
-                        <td><span class="status">PROSES</span></td>
-                    </tr>
-                    <tr>
-                        <td>02</td>
-                        <td class="date">Senin</td>
-                        <td>13:00 - 15:30</td>
-                        <td class="event-name">Elektronika Analog</td>
-                        <td>JICA lt3.Lab Elektronika</td>
-                        <td><span class="status">PROSES</span></td>
-                    </tr>
-                    <tr>
-                        <td>03</td>
-                        <td class="date">Selasa</td>
-                        <td>08:40 - 10:20</td>
-                        <td class="event-name">Fisika Modern</td>
-                        <td>JICA lt3.302</td>
-                        <td><span class="status">PROSES</span></td>
-                    </tr>
-                    <tr>
-                        <td>04</td>
-                        <td class="date">Rabu</td>
-                        <td>08:40 - 10:20</td>
-                        <td class="event-name">Olahraga dan Kebugaran</td>
-                        <td>Gymnasium</td>
-                        <td><span class="status">PROSES</span></td>
-                    </tr>
-                    <tr>
-                        <td>05</td>
-                        <td class="date">Rabu</td>
-                        <td>10:20 - 12:00</td>
-                        <td class="event-name">Seminar Pendidikan Agama Islam</td>
-                        <td>JICA lt3.304</td>
-                        <td><span class="status">PROSES</span></td>
-                    </tr>
-                    <tr>
-                        <td>06</td>
-                        <td class="date">Rabu</td>
-                        <td>13:00 - 14:40</td>
-                        <td class="event-name">Teknologi Informasi dan Komunikasi</td>
-                        <td>JICA lt4.402</td>
-                        <td><span class="status">PROSES</span></td>
-                    </tr>
-                    <tr>
-                        <td>07</td>
-                        <td class="date">Kamis</td>
-                        <td>08:40 - 10:20</td>
-                        <td class="event-name">Mekanika</td>
-                        <td>JICA lt3.302</td>
-                        <td><span class="status">PROSES</span></td>
-                    </tr>
-                    <tr>
-                        <td>08</td>
-                        <td class="date">Kamis</td>
-                        <td>13:00 - 15:30</td>
-                        <td class="event-name">Matematika Fisika II</td>
-                        <td>fpmipa-C lt3.302</td>
-                        <td><span class="status">PROSES</span></td>
-                    </tr>
-                    <tr>
-                        <td>09</td>
-                        <td class="date">Jum'at</td>
-                        <td>07:00 - 08:40</td>
-                        <td class="event-name">Landasan Pendidikan</td>
-                        <td>Gedung FPMIPA-B lt3..304</td>
-                        <td><span class="status">PROSES</span></td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td class="date">Jum'at</td>
-                        <td>13:00 - 14:40</td>
-                        <td class="event-name">Mekanika</td>
-                        <td>JICA lt3.305</td>
-                        <td><span class="status">PROSES</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
+            <tr class="hover:bg-amber-50">
+              <td class="p-3 font-mono text-center border-r-2 border-black font-bold">10</td>
+              <td class="p-3 font-bold border-r-2 border-black">Jum'at</td>
+              <td class="p-3 border-r-2 border-black font-mono">13:00 - 14:40</td>
+              <td class="p-3 font-bold border-r-2 border-black">Mekanika</td>
+              <td class="p-3 border-r-2 border-black">JICA lt3.305</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 bg-nb-yellow border border-black font-display text-[10px]">PROSES</span></td>
+            </tr>
 
-<section class="section contact" id="contact">
-    <div class="container contact-grid">
-        <div class="contact-copy">
-            <div class="eyebrow">Hubungi Saya</div>
-            <h2>Mari Terhubung.</h2>
-            <p>
-                Terbuka untuk diskusi akademik, kolaborasi penelitian, proyek,
-                kegiatan mahasiswa, dan pertukaran ide.
-            </p>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-            <div class="contact-list">
-                <div class="contact-item">
-                    <div class="contact-icon">@</div>
-                    <div>
-                        <strong>Email</strong>
-                        <span>ilhamphy5@student.upi.edu</span>
-                    </div>
-                </div>
+    <!-- ================= 9. HUBUNGI SAYA (KONTAK & FORMULIR) ================= -->
+    <section id="contact" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Kontak Info -->
+      <div class="lg:col-span-5 space-y-4">
+        <span class="bg-nb-yellow px-3 py-1 font-display text-xs border-2 border-black shadow-[2px_2px_0px_#121212]">
+          HUBUNGI SAYA
+        </span>
+        <h2 class="font-display text-3xl sm:text-5xl">MARI TERHUBUNG.</h2>
+        <p class="text-zinc-700 text-sm sm:text-base leading-relaxed">
+          Terbuka untuk diskusi akademik, kolaborasi penelitian, proyek, kegiatan mahasiswa, dan pertukaran ide.
+        </p>
 
-                <div class="contact-item">
-                    <div class="contact-icon">ig</div>
-                    <div>
-                        <strong>Instagram</strong>
-                        <span>@iamm00nlight_</span>
-                    </div>
-                </div>
+        <div class="space-y-3 pt-2">
+          
+          <a href="mailto:ilhamphy5@student.upi.edu" class="card-brutal p-4 bg-white flex items-center gap-3">
+            <span class="w-10 h-10 bg-nb-yellow border-2 border-black font-display text-base flex items-center justify-center">@</span>
+            <div>
+              <strong class="font-display text-xs block">EMAIL MAHASISWA</strong>
+              <span class="text-xs text-zinc-700">ilhamphy5@student.upi.edu</span>
             </div>
-        </div>  
-    </div>
-</section>
+          </a>
 
-</main>
+          <a href="https://instagram.com/iamm00nlight_" target="_blank" rel="noopener noreferrer" class="card-brutal p-4 bg-white flex items-center gap-3">
+            <span class="w-10 h-10 bg-nb-orange text-white border-2 border-black font-display text-xs flex items-center justify-center">IG</span>
+            <div>
+              <strong class="font-display text-xs block">INSTAGRAM</strong>
+              <span class="text-xs text-zinc-700">@iamm00nlight_</span>
+            </div>
+          </a>
 
-<footer>
-    <div class="container footer-main">
-        <div class="footer-brand">
-            <h2>ilham cahya purnama</h2>
-            <p>
-                Personal academic portfolio untuk mendokumentasikan pendidikan,
-                penelitian, publikasi, proyek, dan perjalanan belajar.
-            </p>
+          <a href="https://github.com/ilhamcahyap" target="_blank" rel="noopener noreferrer" class="card-brutal p-4 bg-white flex items-center gap-3">
+            <span class="w-10 h-10 bg-nb-green border-2 border-black font-display text-xs flex items-center justify-center">GIT</span>
+            <div>
+              <strong class="font-display text-xs block">GITHUB</strong>
+              <span class="text-xs text-zinc-700">github.com/ilhamcahyap</span>
+            </div>
+          </a>
+
         </div>
+      </div>
 
-        <div class="footer-col">
-            <h3>Navigasi</h3>
-            <a href="#about">Tentang</a>
-            <a href="#education">Pendidikan</a>
-            <a href="#research">Penelitian</a>
-            <a href="#publications">Publikasi</a>
-        </div>
+      <!-- Formulir Kirim Pesan Interaktif -->
+      <div class="lg:col-span-7 card-brutal p-6 sm:p-8 bg-white">
+        <h3 class="font-display text-2xl mb-1">KIRIM PESAN LANGSUNG</h3>
+        <p class="text-zinc-600 text-xs mb-6">Tinggalkan pesan untuk keperluan akademik atau kolaborasi.</p>
 
-        <div class="footer-col">
-            <h3>Lainnya</h3>
-            <a href="#gallery">Galeri</a>
-            <a href="#schedule">Jadwal</a>
-            <a href="#contact">Kontak</a>
-            <a href="#home">Kembali ke atas</a>
-        </div>
+        <form id="contactForm" class="space-y-4" onsubmit="handleFormSubmit(event)">
+          <div>
+            <label class="block font-display text-xs uppercase mb-1">NAMA LENGKAP</label>
+            <input type="text" required placeholder="Nama Anda..." 
+                   class="w-full p-3 border-3 border-black font-medium text-xs sm:text-sm bg-[#fbf6ea] focus:bg-white outline-none focus:ring-2 focus:ring-black">
+          </div>
+
+          <div>
+            <label class="block font-display text-xs uppercase mb-1">EMAIL / KONTAK</label>
+            <input type="email" required placeholder="email@contoh.com..." 
+                   class="w-full p-3 border-3 border-black font-medium text-xs sm:text-sm bg-[#fbf6ea] focus:bg-white outline-none focus:ring-2 focus:ring-black">
+          </div>
+
+          <div>
+            <label class="block font-display text-xs uppercase mb-1">PESAN / TUJUAN</label>
+            <textarea rows="4" required placeholder="Tuliskan pesan atau topik diskusi di sini..." 
+                      class="w-full p-3 border-3 border-black font-medium text-xs sm:text-sm bg-[#fbf6ea] focus:bg-white outline-none focus:ring-2 focus:ring-black"></textarea>
+          </div>
+
+          <button type="submit" class="btn-brutal w-full py-3.5 bg-nb-yellow font-display text-xs sm:text-sm uppercase tracking-wider">
+            KIRIM PESAN SEKARANG →
+          </button>
+
+          <div id="formSuccess" class="hidden p-3 bg-nb-green border-2 border-black font-display text-xs text-center">
+            ✓ Pesan Anda telah dicatat! Terima kasih telah terhubung.
+          </div>
+        </form>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-black text-white border-t-4 border-black py-12 px-4 sm:px-8 mt-20">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
+      
+      <div class="md:col-span-6 space-y-3">
+        <h2 class="font-display text-2xl text-nb-yellow">ILHAM CAHYA PURNAMA</h2>
+        <p class="text-zinc-400 text-xs sm:text-sm max-w-md leading-relaxed">
+          Personal academic portfolio untuk mendokumentasikan pendidikan, penelitian, publikasi, proyek, dan perjalanan belajar.
+        </p>
+      </div>
+
+      <div class="md:col-span-3 space-y-2 text-xs">
+        <h3 class="font-display text-sm text-white mb-2">NAVIGASI</h3>
+        <div><a href="#about" class="text-zinc-400 hover:text-nb-yellow">Tentang</a></div>
+        <div><a href="#education" class="text-zinc-400 hover:text-nb-yellow">Pendidikan</a></div>
+        <div><a href="#research" class="text-zinc-400 hover:text-nb-yellow">Penelitian</a></div>
+        <div><a href="#publications" class="text-zinc-400 hover:text-nb-yellow">Publikasi</a></div>
+      </div>
+
+      <div class="md:col-span-3 space-y-2 text-xs">
+        <h3 class="font-display text-sm text-white mb-2">LAINNYA</h3>
+        <div><a href="#gallery" class="text-zinc-400 hover:text-nb-yellow">Galeri</a></div>
+        <div><a href="#schedule" class="text-zinc-400 hover:text-nb-yellow">Jadwal Kuliah</a></div>
+        <div><a href="#contact" class="text-zinc-400 hover:text-nb-yellow">Kontak</a></div>
+        <div><a href="#home" class="text-nb-yellow font-bold">↑ Kembali ke atas</a></div>
+      </div>
+
     </div>
 
-    <div class="container footer-bottom">
-        <span>© <span id="year"></span> ilhamcp511. All rights reserved.</span>
-        <span>Academic Portfolio · Indonesia</span>
+    <div class="max-w-6xl mx-auto border-t border-zinc-800 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 font-bold gap-2">
+      <span>© 2026 ilhamcp511. All rights reserved.</span>
+      <span>Academic Portfolio • FPMIPA Universitas Pendidikan Indonesia</span>
     </div>
-</footer>
+  </footer>
 
-<button class="back-top" id="backTop" aria-label="Kembali ke atas">↑</button>
+  <script>
+    lucide.createIcons();
 
-<script>
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-const backTop = document.getElementById("backTop");
-const contactForm = document.getElementById("contactForm");
-const formMessage = document.getElementById("formMessage");
-
-menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-});
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-    });
-});
-
-window.addEventListener("scroll", () => {
-    backTop.classList.toggle("show", window.scrollY > 500);
-
-    const sections = document.querySelectorAll("main section[id]");
-    const links = document.querySelectorAll(".nav-links a");
-
-    let current = "home";
-
-    sections.forEach(section => {
-        const top = section.offsetTop - 130;
-        if (window.scrollY >= top) current = section.id;
-    });
-
-    links.forEach(link => {
-        link.classList.toggle(
-            "active",
-            link.getAttribute("href") === "#" + current
-        );
-    });
-});
-
-backTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-if (contactForm && formMessage) {
-    contactForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        formMessage.style.display = "block";
-        contactForm.reset();
-    });
-}
-
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById('formSuccess').classList.remove('hidden');
+      document.getElementById('contactForm').reset();
+    }
+  </script>
 </body>
 </html>
